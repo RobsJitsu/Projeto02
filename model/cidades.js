@@ -1,12 +1,12 @@
-const mongoose = require("mongoose");  //importando o mongoose
+const mongoose = require("mongoose");  
 
-const cidadesModel = new mongoose.Schema({ //criando nosso modelo do banco
-    nome: { type: String, required: true }, // chave/ valor: tipo do valor e se é obrigatorio
+const cidadesModel = new mongoose.Schema({ 
+    nome: { type: String, required: true }, 
     bairros: { type: String, required: true },
     povo: { type: Number },
-    niver: { type: Date, default: Date.now } //default, valor padrao caso nao seja passado
+    niver: { type: Date, default: Date.now } 
 });
 
-const Cidades = mongoose.model("Cidades",cidadesModel); // a criacao do modelo na colection Pessoas
+const Cidades = mongoose.model("Cidades",cidadesModel); 
 
-module.exports = Cidades; //exportando o modelo pronto
+module.exports = Cidades; 

@@ -1,15 +1,13 @@
-const mongoose = require("mongoose");  //importando o mongoose
+const mongoose = require("mongoose");  
 
 async function Conn(){
-    await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.HOST}/${process.env.DB_BASE}`,{ // string de conexao ou local ou atlas
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    }).then(() => { // tudo certo faz isso
+    await mongoose.connect(process.env.MONGOURI)
+    .then(() => {
         console.log("MongoDB esta conectado");
-    }).catch((err) => { // caso de erro faz isso
+    }).catch((err) => { 
         console.error(err);
     });
 }
 
-module.exports = Conn; //exporta a conexao
+module.exports = Conn; 
 

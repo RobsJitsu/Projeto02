@@ -1,0 +1,1 @@
+{"client":"Thunder Client","environmentName":"API","dateExported":"2021-11-15T20:26:24.731Z","version":"1.0","variables":[{"name":"uri","value":"http://localhost:3000"},{"name":"uriPaises","value":"http://localhost:3000/paises"},{"name":"uriCidades","value":"http://localhost:3000/cidades"},{"name":"uriEstados","value":"http://localhost:3000/estados"}]}

@@ -1,13 +1,13 @@
-const express = require("express"); //import do express
-const router = express.Router(); //define app como express
-const Cidades = require("./../model/cidades"); // import do modelo pessoa
+const express = require("express"); 
+const router = express.Router(); 
+const Cidades = require("./../model/cidades"); 
 
 router.get('/', (req,res) => {
     res.status(200).json({message:"rota cidades ok"});
 });
 
 router.get('/listar', async (req,res) => {
-    await Cidades.find({}).then((cidade) => { //pega todo mundo do banco
+    await Cidades.find({}).then((cidades) => { 
         console.log(cidades);
         res.status(200).json(cidades);
     }).catch((err) => {
@@ -16,11 +16,9 @@ router.get('/listar', async (req,res) => {
     });
 });
 
-router.get('/listarnome/:nome', async (req,res) => {
-    const nome = req.params.nome;  //recebendo nome por parametro
-    await Cidades.findOne({ nome:nome }).then((cidade) => { //findOne retorna o primeiro que der match com o item passado
-        console.log(cidade);
-        if(cidade == null){ //validando se retorna null 
+router.get('/listarnome/:id', async (req,res) => { 
+    await Cidades.findById(req.params.id).then((cidade) => {
+        if(cidade == null){ 
             res.status(404).json({message: "nao encontrado"});
         }else{
             res.status(200).json(cidade);
@@ -31,9 +29,8 @@ router.get('/listarnome/:nome', async (req,res) => {
     });
 });
 
-router.post('/adicionar', async (req,res) => { //add nova pessoa no banco
+router.post('/adicionar', async (req,res) => { 
 
-    //validando as entradas do usuario
     if(!req.body.nome){
         res.status(400).json({message: "faltou nome"});
         return;
@@ -43,15 +40,15 @@ router.post('/adicionar', async (req,res) => { //add nova pessoa no banco
     }
     else if(!req.body.povo){
         res.status(400).json({message: "faltou população"});
-        return; // nao esquecer dos returns dentro dos ifs
+        return; 
     }
     else if(!req.body.niver){
         res.status(400).json({message: "faltou data de aniversário"});
-        return; // nao esquecer dos returns dentro dos ifs
+        return; 
     }
 
-    await Pessoa.create(req.body).then(() => {
-        res.status(200).json({message: "cadastrado com sucesso"});
+    await Cidades.create(req.body).then(() => {
+        res.status(201).json({message: "cadastrado com sucesso"});
     }).catch((err) => {
         res.status(400).json({message: "algo errado"});
         console.error(err);
@@ -79,7 +76,7 @@ router.put('/update/:id', async (req,res) => {
         return;
     }
 
-    await Cidades.updateOne({ _id:id},req.body).then(() => { //updateOne atualiza o primeiro que encontrar e der match
+    await Cidades.updateOne({ _id:id},req.body).then(() => { 
         res.status(200).json({message: "Atualizado com sucesso"});
     }).catch((err) => {
         console.error(err);
@@ -97,6 +94,5 @@ router.delete("/deletar/:id", async (req,res) => {
         console.error(err);
     });
 })
-
 
 module.exports = router;
