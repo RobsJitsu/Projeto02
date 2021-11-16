@@ -9,7 +9,7 @@ Conn();
 
 app.get('/', (req,res) => {
     res.status(200).json({message:"rota cidades ok"});
-)}
+})
 
 const paisesRouter = require("./routers/paises.routes");
 app.use('/paises',paisesRouter);
