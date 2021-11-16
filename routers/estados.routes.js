@@ -2,10 +2,6 @@ const express = require("express");
 const router = express.Router(); 
 const Estados = require("./../model/estados"); 
 
-router.get('/', (req,res) => {
-    res.status(200).json({message:"rota estados ok"});
-});
-
 router.get('/listar', async (req,res) => {
     await Estados.find({}).then((estados) => { 
         console.log(estados);
