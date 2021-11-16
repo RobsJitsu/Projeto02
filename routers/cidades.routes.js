@@ -2,10 +2,6 @@ const express = require("express");
 const router = express.Router(); 
 const Cidades = require("./../model/cidades"); 
 
-router.get('/', (req,res) => {
-    res.status(200).json({message:"rota cidades ok"});
-});
-
 router.get('/listar', async (req,res) => {
     await Cidades.find({}).then((cidades) => { 
         console.log(cidades);
