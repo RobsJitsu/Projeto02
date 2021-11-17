@@ -8,7 +8,7 @@ const Conn = require("./model/conn/index");
 Conn(); 
 
 app.get('/', (req,res) => {
-    res.status(200).json({message:"rota ok"});
+    res.status(200).json({message:"rota index ok"});
 })
 
 const paisesRouter = require("./routers/paises.routes");
