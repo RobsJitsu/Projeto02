@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router(); 
 const CidadesController = require("./../controller/cidades.controller"); 
 
-router.get('/listar', CidadesController.getAll);
+router.get('/listall', CidadesController.getAll);
 
-router.get('/listarnome/:id', CidadesController.getSingle);
+router.get('/listname/:id', CidadesController.getSingle);
 
-router.post('/adicionar', CidadesController.postCreate);
+router.post('/add', CidadesController.postCreate);
 
 router.put('/update/:id', CidadesController.putUpdate);
 
-router.delete("/deletar/:id", CidadesController.delDelete);
+router.delete("/delete/:id", CidadesController.delDelete);
 
 module.exports = router;

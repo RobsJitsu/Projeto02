@@ -6,14 +6,14 @@ const PaisesController = require("./../controller/paises.controller");
 //     res.status(200).json({message:"rota index ok"});
 // })
 
-router.get('/listar', PaisesController.getAll);
+router.get('/listall', PaisesController.getAll);
 
-router.get('/listarnome/:id', PaisesController.getSingle);
+router.get('/listname/:id', PaisesController.getSingle);
 
-router.post('/adicionar', PaisesController.postCreate);
+router.post('/add', PaisesController.postCreate);
 
 router.put('/update/:id', PaisesController.putUpdate);
 
-router.delete("/deletar/:id", PaisesController.delDelete);
+router.delete("/delete/:id", PaisesController.delDelete);
 
 module.exports = router;
